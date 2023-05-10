@@ -1,4 +1,4 @@
-package logica;
+package model;
 
 public class Dulce{
     public Dulce(char Tipo,String name){
