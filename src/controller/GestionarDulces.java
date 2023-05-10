@@ -1,6 +1,5 @@
-package logica;
+package controller;
 
-import interfazGrafica.LaminaPrincipal;
 
 public class GestionarDulces {
     public GestionarDulces(){
