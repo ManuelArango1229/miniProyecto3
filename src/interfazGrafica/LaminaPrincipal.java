@@ -1,7 +1,6 @@
 package interfazGrafica;
 
-import java.awt.BorderLayout;
-
+import java.awt.BorderLayout;   
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
@@ -10,6 +9,8 @@ public class LaminaPrincipal extends JPanel {
     public LaminaPrincipal(){
         this.setLayout(new BorderLayout());
         MenuPrincipal();
+
+        add(new laminaGestionar());
     }
     
     public void MenuPrincipal(){
