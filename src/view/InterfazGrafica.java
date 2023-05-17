@@ -7,11 +7,9 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import controller.ControladorDulces;
@@ -25,29 +23,28 @@ public class InterfazGrafica {
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setSize(new Dimension(400, 400));
         ventana.setLocationRelativeTo(null);
-        gestionMenu();
         InitlaminaAgregar();
-        ventana.setVisible(true);
+        initLaminaEliminar();
+        initLaminaMostar();
+        initLaminaActualizar();
+        gestionMenu();
     }
 
     public void gestionMenu() {
-        JMenuBar barraMenu = new JMenuBar();
-        JMenu menu = new JMenu("Gestionar Dulces");
-        barraMenu.add(menu);
-        JMenuItem AgregarDulces = new JMenuItem("Agregar Dulce");
-        JMenuItem ModificarDulces = new JMenuItem("Modificar Dulces");
-        JMenuItem EliminarDulces = new JMenuItem("Eliminar Dulces");
-        menu.add(AgregarDulces);
-        menu.add(ModificarDulces);
-        menu.add(EliminarDulces);
-        ventana.add(barraMenu, BorderLayout.NORTH);
+        JTabbedPane panel = new JTabbedPane();
+        panel.addTab("Agregar", laminaAgregar);
+        panel.addTab("Eliminar", laminaEliminarDulces);
+        panel.addTab("Mostrar", LaminaMostrarDulces);
+        panel.addTab("Actualizar", laminaActualizarDulces);
+        ventana.add(panel);
+
     }
 
     public void InitlaminaAgregar() {
         laminaAgregar = new JPanel();
         laminaAgregar.setLayout(null);
         JLabel title = new JLabel("AGREGAR DULCES");
-        title.setBounds(130, 40, 130, 30);
+        title.setBounds(130, 30, 130, 30);
         laminaAgregar.add(title);
         JLabel nombreDulce = new JLabel("Nombre del dulce: ");
         nombreDulce.setBounds(60, 100, 180, 30);
@@ -75,17 +72,56 @@ public class InterfazGrafica {
         JButton buttonrefrescarCampos = new JButton("Refrescar");
         buttonrefrescarCampos.setBounds(70, 270, 100, 30);
         laminaAgregar.add(buttonrefrescarCampos);
-        ventana.add(laminaAgregar, BorderLayout.CENTER);
     }
 
+    public void initLaminaEliminar() {
+        laminaEliminarDulces = new JPanel();
+        laminaEliminarDulces.setLayout(null);
+        JLabel titleEliminar = new JLabel("ELIMINAR DULCE");
+        titleEliminar.setBounds(130, 30, 150, 30);
+        laminaEliminarDulces.add(titleEliminar);
+        JLabel labelnameD = new JLabel("Nombre Del Dulce: ");
+        labelnameD.setBounds(60, 100, 180, 30);
+        laminaEliminarDulces.add(labelnameD);
+        campoNombreEliminar.setBounds(180, 100, 150, 30);
+        laminaEliminarDulces.add(campoNombreEliminar);
+        JButton eliminar = new JButton("Elminar");
+        eliminar.setBounds(150, 250, 90, 30);
+        laminaEliminarDulces.add(eliminar);
+    }
+
+    public void initLaminaMostar() {
+        LaminaMostrarDulces = new JPanel();
+        LaminaMostrarDulces.setLayout(null);
+        JLabel titleMostrar = new JLabel("VISTA DE TODOS LOS DULCES");
+        titleMostrar.setBounds(100, 30, 200, 30);
+        LaminaMostrarDulces.add(titleMostrar);
+    }
+
+    public void initLaminaActualizar() {
+        laminaActualizarDulces = new JPanel();
+        laminaActualizarDulces.setLayout(null);
+        JLabel titleActualizar = new JLabel("ACTUALIZAR DULCES");
+        titleActualizar.setBounds(130, 30, 150, 30);
+        laminaActualizarDulces.add(titleActualizar);
+        JLabel labelnameA = new JLabel("Nombre Del Dulce: ");
+        labelnameA.setBounds(60, 100, 180, 30);
+        laminaActualizarDulces.add(labelnameA);
+        campoNombreActualizar.setBounds(180, 100, 150, 30);
+        laminaActualizarDulces.add(campoNombreActualizar);
+    }
+
+    private JPanel laminaActualizarDulces;
+    private JPanel LaminaMostrarDulces;
+    private JPanel laminaEliminarDulces;
     public JRadioButton dulce;
     public JRadioButton acido;
     public JRadioButton sinAzucar;
     public JButton buttonCrearDulce = new JButton("Crear Dulce");;
     public JFrame ventana;
-    private JMenuBar barraMenu;
     private JPanel laminaAgregar;
     private ControladorDulces controlador;
     public JTextField campoNombre = new JTextField("");
-
+    public JTextField campoNombreEliminar = new JTextField("");
+    public JTextField campoNombreActualizar = new JTextField("");
 }

@@ -17,6 +17,7 @@ public class ControladorDulces implements ActionListener {
 
     public void iniciar() {
         view.iniciarComponentes();
+        view.ventana.setVisible(true);
     }
 
     public void crearDulce(String name, char tipo) {
