@@ -1,39 +1,56 @@
 package model;
 
-public class Dulce{
-    public Dulce(char Tipo,String name){
-        dulce=false;
-        acido=false;
-        sinAzucar=false;
-        this.name=name;
+public class Dulce {
+    public Dulce(char Tipo, String name) {
+        dulce = false;
+        acido = false;
+        sinAzucar = false;
+        this.name = name;
         switch (Tipo) {
             case 'D':
-                this.dulce=true;
+                this.dulce = true;
                 break;
             case 'A':
-                this.acido=true;
+                this.acido = true;
             case 'S':
-                this.sinAzucar=true;
+                this.sinAzucar = true;
         }
     }
 
-    public char getTipo(){
-        if(dulce){
+    public char getTipo() {
+        if (dulce) {
             return 'D';
-        }else if(acido){
+        } else if (acido) {
             return 'A';
-        }else if(sinAzucar){
+        } else if (sinAzucar) {
             return 'S';
-        }else{
+        } else {
             return 'X';
         }
     }
 
-    public void setName(String name){
-        this.name=name;
+    public void setTipo(char tipo) {
+        dulce = false;
+        sinAzucar = false;
+        acido = false;
+        switch (tipo) {
+            case 'D':
+                dulce = true;
+                break;
+            case 'S':
+                sinAzucar = true;
+            case 'A':
+                acido = true;
+            default:
+                break;
+        }
     }
 
-    public String getName(){
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
         return name;
     }
 

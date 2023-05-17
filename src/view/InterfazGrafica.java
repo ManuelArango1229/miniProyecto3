@@ -10,9 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
-import controller.ControladorDulces;
 
 public class InterfazGrafica {
 
@@ -96,6 +95,11 @@ public class InterfazGrafica {
         JLabel titleMostrar = new JLabel("VISTA DE TODOS LOS DULCES");
         titleMostrar.setBounds(100, 30, 200, 30);
         LaminaMostrarDulces.add(titleMostrar);
+        areaMostrar.setBounds(30, 60, 320, 200);
+        areaMostrar.setEditable(false);
+        LaminaMostrarDulces.add(areaMostrar);
+        ButtonactualizarM.setBounds(150, 285, 100, 30);
+        LaminaMostrarDulces.add(ButtonactualizarM);
     }
 
     public void initLaminaActualizar() {
@@ -109,19 +113,57 @@ public class InterfazGrafica {
         laminaActualizarDulces.add(labelnameA);
         campoNombreActualizar.setBounds(180, 100, 150, 30);
         laminaActualizarDulces.add(campoNombreActualizar);
+        buttonActualizarA.setBounds(150, 220, 100, 30);
+        laminaActualizarDulces.add(buttonActualizarA);
+        buttonComprobarA.setBounds(150, 220, 100, 30);
+        laminaActualizarDulces.add(buttonComprobarA);
+        labelActualizar.setBounds(65, 170, 320, 20);
+        laminaActualizarDulces.add(labelActualizar);
+        labelActualizar.setVisible(false);
+        ButtonGroup grupoA = new ButtonGroup();
+        dulceA = new JRadioButton("Dulce");
+        acidoA = new JRadioButton("Acido");
+        sinAzucarA = new JRadioButton("Sin Azucar");
+        grupoA.add(dulceA);
+        grupoA.add(acidoA);
+        grupoA.add(sinAzucarA);
+        dulceA.setBounds(120, 180, 60, 30);
+        sinAzucarA.setBounds(120, 160, 100, 30);
+        acidoA.setBounds(120, 140, 60, 30);
+        laminaActualizarDulces.add(dulceA);
+        laminaActualizarDulces.add(sinAzucarA);
+        laminaActualizarDulces.add(acidoA);
+        dulceA.setVisible(false);
+        acidoA.setVisible(false);
+        sinAzucarA.setVisible(false);
+        labelNuevosDatos.setBounds(60, 80, 180, 20);
+        laminaActualizarDulces.add(labelNuevosDatos);
+        labelNuevosDatos.setVisible(false);
+        buttonComprobarA.setBounds(150, 220, 100, 30);
+        laminaActualizarDulces.add(buttonComprobarA);
+        buttonActualizarA.setVisible(false);
     }
 
+    public JLabel labelActualizar = new JLabel(
+            "no se encontro nigun dulce con este nombre");
+    public JLabel labelNuevosDatos = new JLabel("Ingrese los nuevos datos: ");
+    public JButton ButtonactualizarM = new JButton("Actualizar");
+    public JTextArea areaMostrar = new JTextArea("");
     private JPanel laminaActualizarDulces;
     private JPanel LaminaMostrarDulces;
     private JPanel laminaEliminarDulces;
+    public JRadioButton dulceA;
+    public JRadioButton acidoA;
+    public JRadioButton sinAzucarA;
     public JRadioButton dulce;
     public JRadioButton acido;
     public JRadioButton sinAzucar;
     public JButton buttonCrearDulce = new JButton("Crear Dulce");;
     public JFrame ventana;
     private JPanel laminaAgregar;
-    private ControladorDulces controlador;
     public JTextField campoNombre = new JTextField("");
     public JTextField campoNombreEliminar = new JTextField("");
     public JTextField campoNombreActualizar = new JTextField("");
+    public JButton buttonComprobarA = new JButton("Comprobar");
+    public JButton buttonActualizarA = new JButton("Actualizar");
 }
