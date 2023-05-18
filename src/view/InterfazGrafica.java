@@ -56,7 +56,7 @@ public class InterfazGrafica {
         sinAzucar = new JRadioButton("Sin Azucar");
         acido = new JRadioButton("Acido");
         dulce = new JRadioButton("Dulce");
-        ButtonGroup categoriaDulce = new ButtonGroup();
+        categoriaDulce = new ButtonGroup();
         categoriaDulce.add(sinAzucar);
         categoriaDulce.add(acido);
         categoriaDulce.add(dulce);
@@ -66,11 +66,8 @@ public class InterfazGrafica {
         laminaAgregar.add(sinAzucar);
         laminaAgregar.add(acido);
         laminaAgregar.add(dulce);
-        buttonCrearDulce.setBounds(200, 270, 120, 30);
+        buttonCrearDulce.setBounds(120, 270, 120, 30);
         laminaAgregar.add(buttonCrearDulce);
-        JButton buttonrefrescarCampos = new JButton("Refrescar");
-        buttonrefrescarCampos.setBounds(70, 270, 100, 30);
-        laminaAgregar.add(buttonrefrescarCampos);
     }
 
     public void initLaminaEliminar() {
@@ -84,9 +81,6 @@ public class InterfazGrafica {
         laminaEliminarDulces.add(labelnameD);
         campoNombreEliminar.setBounds(180, 100, 150, 30);
         laminaEliminarDulces.add(campoNombreEliminar);
-        labelEliminar.setBounds(120, 170, 180, 30);
-        laminaEliminarDulces.add(labelEliminar);
-        labelEliminar.setVisible(false);
         buttonEliminar.setBounds(150, 250, 90, 30);
         laminaEliminarDulces.add(buttonEliminar);
     }
@@ -97,11 +91,12 @@ public class InterfazGrafica {
         JLabel titleMostrar = new JLabel("VISTA DE TODOS LOS DULCES");
         titleMostrar.setBounds(100, 30, 200, 30);
         LaminaMostrarDulces.add(titleMostrar);
-        areaMostrar.setBounds(30, 60, 320, 200);
+        areaMostrar.setBounds(30, 60, 320, 250);
         areaMostrar.setEditable(false);
         LaminaMostrarDulces.add(areaMostrar);
         ButtonactualizarM.setBounds(150, 285, 100, 30);
         LaminaMostrarDulces.add(ButtonactualizarM);
+        ButtonactualizarM.setVisible(false);
 
     }
 
@@ -123,7 +118,7 @@ public class InterfazGrafica {
         labelActualizar.setBounds(65, 170, 320, 20);
         laminaActualizarDulces.add(labelActualizar);
         labelActualizar.setVisible(false);
-        ButtonGroup grupoA = new ButtonGroup();
+        grupoA = new ButtonGroup();
         dulceA = new JRadioButton("Dulce");
         acidoA = new JRadioButton("Acido");
         sinAzucarA = new JRadioButton("Sin Azucar");
@@ -147,8 +142,9 @@ public class InterfazGrafica {
         buttonActualizarA.setVisible(false);
     }
 
+    public ButtonGroup grupoA;
+    public ButtonGroup categoriaDulce;
     public JButton buttonEliminar = new JButton("Eliminar");
-    public JLabel labelEliminar = new JLabel("No Se Encontro El Dulce");
     public JLabel labelActualizar = new JLabel(
             "no se encontro nigun dulce con este nombre");
     public JLabel labelNuevosDatos = new JLabel("Ingrese los nuevos datos: ");

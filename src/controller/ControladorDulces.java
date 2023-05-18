@@ -42,7 +42,7 @@ public class ControladorDulces implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int index = 0;
+
         if (e.getSource() == view.buttonCrearDulce) {
             char tipo = 'A';
             if (view.dulce.isSelected()) {
@@ -53,6 +53,10 @@ public class ControladorDulces implements ActionListener {
                 tipo = 'S';
             }
             crearDulce(view.campoNombre.getText(), tipo);
+            JOptionPane.showMessageDialog(null, "Dulce Creado");
+            view.campoNombre.setText("");
+            view.categoriaDulce.clearSelection();
+            view.ButtonactualizarM.doClick();
         }
 
         if (e.getSource() == view.ButtonactualizarM) {
@@ -76,10 +80,8 @@ public class ControladorDulces implements ActionListener {
                 view.sinAzucarA.setVisible(true);
                 view.dulceA.setVisible(true);
             } else {
-                view.dulceA.setVisible(false);
-                view.sinAzucarA.setVisible(false);
-                view.acidoA.setVisible(false);
-                view.labelActualizar.setVisible(true);
+                JOptionPane.showMessageDialog(null, "Dulce No Encontrado");
+                view.campoNombreActualizar.setText("");
             }
         }
         if (e.getSource() == view.buttonActualizarA) {
@@ -93,6 +95,16 @@ public class ControladorDulces implements ActionListener {
             }
             data.obteberDulces().get(index).setName(view.campoNombreActualizar.getText());
             data.obteberDulces().get(index).setTipo(tipo);
+            JOptionPane.showMessageDialog(null, "Dulce Actualizado");
+            view.campoNombreActualizar.setText("");
+            view.labelNuevosDatos.setVisible(false);
+            view.acidoA.setVisible(false);
+            view.sinAzucarA.setVisible(false);
+            view.dulceA.setVisible(false);
+            view.buttonActualizarA.setVisible(false);
+            view.buttonComprobarA.setVisible(true);
+            view.grupoA.clearSelection();
+            view.ButtonactualizarM.doClick();
         }
         if (e.getSource() == view.buttonEliminar) {
             boolean band = false;
@@ -106,12 +118,16 @@ public class ControladorDulces implements ActionListener {
             if (band) {
                 data.obteberDulces().remove(index);
                 JOptionPane.showMessageDialog(null, "Dulce Eliminado");
+                view.campoNombreEliminar.setText("");
+                view.ButtonactualizarM.doClick();
             } else {
-                view.labelEliminar.setVisible(true);
+                JOptionPane.showMessageDialog(null, "No Se Encontro El Dulce");
+                view.campoNombreEliminar.setText("");
             }
         }
     }
 
+    private int index = 0;
     private Datos data;
     private InterfazGrafica view;
 
