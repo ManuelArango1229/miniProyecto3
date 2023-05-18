@@ -34,7 +34,7 @@ public class ControladorDulces implements ActionListener {
     public String mostrarDulces() {
         String texto = "";
         for (Dulce e : data.obteberDulces()) {
-            texto += e.getName() + "    ";
+            texto += "-- \t" + e.getName() + "\t";
             texto += e.getTipo() + "\n";
         }
         return texto;
@@ -44,7 +44,7 @@ public class ControladorDulces implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == view.buttonCrearDulce) {
-            char tipo = 'A';
+            char tipo = 'X';
             if (view.dulce.isSelected()) {
                 tipo = 'D';
             } else if (view.acido.isSelected()) {
@@ -85,10 +85,10 @@ public class ControladorDulces implements ActionListener {
             }
         }
         if (e.getSource() == view.buttonActualizarA) {
-            char tipo = 'A';
-            if (view.dulce.isSelected()) {
+            char tipo = 'X';
+            if (view.dulceA.isSelected()) {
                 tipo = 'D';
-            } else if (view.acido.isSelected()) {
+            } else if (view.acidoA.isSelected()) {
                 tipo = 'A';
             } else {
                 tipo = 'S';

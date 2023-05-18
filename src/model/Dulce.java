@@ -17,15 +17,15 @@ public class Dulce {
         }
     }
 
-    public char getTipo() {
+    public String getTipo() {
         if (dulce) {
-            return 'D';
+            return "Dulce";
         } else if (acido) {
-            return 'A';
+            return "Acido";
         } else if (sinAzucar) {
-            return 'S';
+            return "Sin Azucar";
         } else {
-            return 'X';
+            return "No Especificado";
         }
     }
 
