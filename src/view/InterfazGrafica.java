@@ -84,9 +84,11 @@ public class InterfazGrafica {
         laminaEliminarDulces.add(labelnameD);
         campoNombreEliminar.setBounds(180, 100, 150, 30);
         laminaEliminarDulces.add(campoNombreEliminar);
-        JButton eliminar = new JButton("Elminar");
-        eliminar.setBounds(150, 250, 90, 30);
-        laminaEliminarDulces.add(eliminar);
+        labelEliminar.setBounds(120, 170, 180, 30);
+        laminaEliminarDulces.add(labelEliminar);
+        labelEliminar.setVisible(false);
+        buttonEliminar.setBounds(150, 250, 90, 30);
+        laminaEliminarDulces.add(buttonEliminar);
     }
 
     public void initLaminaMostar() {
@@ -100,6 +102,7 @@ public class InterfazGrafica {
         LaminaMostrarDulces.add(areaMostrar);
         ButtonactualizarM.setBounds(150, 285, 100, 30);
         LaminaMostrarDulces.add(ButtonactualizarM);
+
     }
 
     public void initLaminaActualizar() {
@@ -144,6 +147,8 @@ public class InterfazGrafica {
         buttonActualizarA.setVisible(false);
     }
 
+    public JButton buttonEliminar = new JButton("Eliminar");
+    public JLabel labelEliminar = new JLabel("No Se Encontro El Dulce");
     public JLabel labelActualizar = new JLabel(
             "no se encontro nigun dulce con este nombre");
     public JLabel labelNuevosDatos = new JLabel("Ingrese los nuevos datos: ");
