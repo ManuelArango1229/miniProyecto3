@@ -4,6 +4,7 @@ import model.Datos;
 import model.Dulce;
 import view.InterfazGrafica;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,6 +20,8 @@ public class ControladorDulces implements ActionListener {
         view.buttonComprobarA.addActionListener(this);
         view.buttonActualizarA.addActionListener(this);
         view.buttonEliminar.addActionListener(this);
+        view.buttonAllDulces.addActionListener(this);
+        view.exitAll.addActionListener(this);
     }
 
     public void iniciar() {
@@ -28,12 +31,22 @@ public class ControladorDulces implements ActionListener {
 
     public void crearDulce(String name, char tipo) {
         Dulce nuevo = new Dulce(tipo, name);
+        data.agregarAllDulces(nuevo);
         data.agregarDulces(nuevo);
     }
 
     public String mostrarDulces() {
         String texto = "";
         for (Dulce e : data.obteberDulces()) {
+            texto += "-- \t" + e.getName() + "\t";
+            texto += e.getTipo() + "\n";
+        }
+        return texto;
+    }
+
+    public String mostrarAllDulces() {
+        String texto = "";
+        for (Dulce e : data.obteberAllDulces()) {
             texto += "-- \t" + e.getName() + "\t";
             texto += e.getTipo() + "\n";
         }
@@ -124,6 +137,42 @@ public class ControladorDulces implements ActionListener {
                 JOptionPane.showMessageDialog(null, "No Se Encontro El Dulce");
                 view.campoNombreEliminar.setText("");
             }
+        }
+        if (e.getSource() == view.buttonAllDulces) {
+            view.title.setText("RESUMEN TODOS LOS DULCES CREADOS");
+            view.title.setBounds(70, 30, 260, 30);
+            view.acido.setVisible(false);
+            view.sinAzucar.setVisible(false);
+            view.dulce.setVisible(false);
+            view.labelTipoDulce.setVisible(false);
+            view.campoNombre.setVisible(false);
+            view.nombreDulce.setVisible(false);
+            view.buttonAllDulces.setVisible(false);
+            view.buttonCrearDulce.setVisible(false);
+            view.areaMostrarAll.setBounds(50, 70, 320, 190);
+            view.areaMostrarAll.setBackground(new Color(196, 223, 223));
+            view.areaMostrarAll.setEditable(false);
+            view.areaMostrarAll.setVisible(true);
+            view.areaMostrarAll.setText(mostrarAllDulces());
+            view.exitAll.setBounds(150, 260, 80, 30);
+            view.exitAll.setVisible(true);
+            view.laminaAgregar.add(view.exitAll);
+            view.laminaAgregar.add(view.areaMostrarAll);
+        }
+        if (e.getSource() == view.exitAll) {
+            view.exitAll.setVisible(false);
+            view.areaMostrarAll.setVisible(false);
+            view.title.setText("AGREGAR DULCES");
+            view.title.setBounds(130, 30, 130, 30);
+            view.acido.setVisible(true);
+            view.sinAzucar.setVisible(true);
+            view.dulce.setVisible(true);
+            view.labelTipoDulce.setVisible(true);
+            view.campoNombre.setVisible(true);
+            view.nombreDulce.setVisible(true);
+            view.buttonAllDulces.setVisible(true);
+            view.buttonCrearDulce.setVisible(true);
+
         }
     }
 

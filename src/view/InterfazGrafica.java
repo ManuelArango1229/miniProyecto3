@@ -28,6 +28,9 @@ public class InterfazGrafica {
         campoNombreActualizar = new JTextField("");
         buttonComprobarA = new JButton("Comprobar");
         buttonActualizarA = new JButton("Actualizar");
+        buttonAllDulces = new JButton("Dulces Creados");
+        areaMostrarAll = new JTextArea();
+        exitAll = new JButton("Salir");
     }
 
     public void iniciarComponentes() {
@@ -58,16 +61,16 @@ public class InterfazGrafica {
         laminaAgregar = new JPanel();
         laminaAgregar.setBackground(new Color(196, 223, 223));
         laminaAgregar.setLayout(null);
-        JLabel title = new JLabel("AGREGAR DULCES");
+        title = new JLabel("AGREGAR DULCES");
         title.setBounds(130, 30, 130, 30);
         laminaAgregar.add(title);
-        JLabel nombreDulce = new JLabel("Nombre del Dulce: ");
+        nombreDulce = new JLabel("Nombre del Dulce: ");
         nombreDulce.setBounds(60, 100, 180, 30);
         laminaAgregar.add(nombreDulce);
         campoNombre.setBounds(180, 100, 150, 30);
         campoNombre.setBackground(new Color(248, 246, 244));
         laminaAgregar.add(campoNombre);
-        JLabel labelTipoDulce = new JLabel("Tipo De Dulce:");
+        labelTipoDulce = new JLabel("Tipo De Dulce:");
         labelTipoDulce.setBounds(140, 155, 150, 30);
         laminaAgregar.add(labelTipoDulce);
         sinAzucar = new JRadioButton("Sin Azucar");
@@ -86,9 +89,12 @@ public class InterfazGrafica {
         laminaAgregar.add(sinAzucar);
         laminaAgregar.add(acido);
         laminaAgregar.add(dulce);
-        buttonCrearDulce.setBounds(120, 270, 120, 30);
+        buttonCrearDulce.setBounds(210, 270, 120, 30);
         buttonCrearDulce.setBackground(new Color(227, 244, 244));
         laminaAgregar.add(buttonCrearDulce);
+        buttonAllDulces.setBounds(40, 270, 150, 30);
+        buttonAllDulces.setBackground(new Color(227, 244, 244));
+        laminaAgregar.add(buttonAllDulces);
     }
 
     public void initLaminaEliminar() {
@@ -175,6 +181,12 @@ public class InterfazGrafica {
         buttonActualizarA.setVisible(false);
     }
 
+    public JButton exitAll;
+    public JTextArea areaMostrarAll;
+    public JLabel title;
+    public JLabel nombreDulce;
+    public JLabel labelTipoDulce;
+    public JButton buttonAllDulces;
     public ButtonGroup grupoA;
     public ButtonGroup categoriaDulce;
     public JButton buttonEliminar;
@@ -193,7 +205,7 @@ public class InterfazGrafica {
     public JRadioButton sinAzucar;
     public JButton buttonCrearDulce;
     public JFrame ventana;
-    private JPanel laminaAgregar;
+    public JPanel laminaAgregar;
     public JTextField campoNombre;
     public JTextField campoNombreEliminar;
     public JTextField campoNombreActualizar;
