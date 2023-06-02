@@ -1,6 +1,7 @@
 package model;
 
 public class Dulce {
+
     public Dulce(char Tipo, String name) {
         dulce = false;
         acido = false;
@@ -54,6 +55,13 @@ public class Dulce {
         return name;
     }
 
+    public void crearDulce(String name, char tipo) {
+        Dulce nuevo = new Dulce(tipo, name);
+        data.agregarAllDulces(nuevo);
+        data.agregarDulces(nuevo);
+    }
+
+    private Datos data;
     private String name;
     private boolean dulce;
     private boolean acido;

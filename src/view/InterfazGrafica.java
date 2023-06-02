@@ -14,7 +14,10 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class InterfazGrafica {
+import controller.ControladorDulces;
+import model.Datos;
+
+public class InterfazGrafica implements PlantillaInterfaz {
 
     public InterfazGrafica() {
         buttonEliminar = new JButton("Eliminar");
@@ -31,20 +34,68 @@ public class InterfazGrafica {
         buttonAllDulces = new JButton("Dulces Creados");
         areaMostrarAll = new JTextArea();
         exitAll = new JButton("Salir");
+
     }
 
-    public void iniciarComponentes() {
+    @Override
+    public void init(ControladorDulces controlador) {
         ventana = new JFrame("Dulceria");
         ventana.setResizable(false);
         ventana.setLayout(new BorderLayout());
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setSize(new Dimension(400, 400));
         ventana.setLocationRelativeTo(null);
+        ventana.setVisible(true);
+        this.controlador = controlador;
         InitlaminaAgregar();
-        initLaminaEliminar();
-        initLaminaMostar();
         initLaminaActualizar();
+        initLaminaMostar();
+        initLaminaEliminar();
         gestionMenu();
+
+    }
+
+    @Override
+    public void mostrarDulces(Datos data) {
+
+    }
+
+    @Override
+    public String getNameAgregar() {
+        return campoNombre.getText();
+    }
+
+    @Override
+    public String getTipoAgregar() {
+        if (categoriaDulce.getSelection() == dulce) {
+            return dulce.getText();
+        } else if (categoriaDulce.getSelection() == acido) {
+            return acido.getText();
+        } else {
+            return sinAzucar.getText();
+        }
+
+    }
+
+    @Override
+    public String getNameActualizar() {
+        return campoNombreActualizar.getText();
+    }
+
+    @Override
+    public String getTipoActualizar() {
+        if (categoriaDulce.getSelection() == dulceA) {
+            return dulceA.getText();
+        } else if (categoriaDulce.getSelection() == acidoA) {
+            return acidoA.getText();
+        } else {
+            return sinAzucarA.getText();
+        }
+    }
+
+    @Override
+    public String getNameEliminar() {
+        return campoNombreEliminar.getText();
     }
 
     public void gestionMenu() {
@@ -91,6 +142,7 @@ public class InterfazGrafica {
         laminaAgregar.add(dulce);
         buttonCrearDulce.setBounds(210, 270, 120, 30);
         buttonCrearDulce.setBackground(new Color(227, 244, 244));
+        buttonCrearDulce.addActionListener(controlador);
         laminaAgregar.add(buttonCrearDulce);
         buttonAllDulces.setBounds(40, 270, 150, 30);
         buttonAllDulces.setBackground(new Color(227, 244, 244));
@@ -181,34 +233,43 @@ public class InterfazGrafica {
         buttonActualizarA.setVisible(false);
     }
 
+    public JButton buttonEliminar;
+    public JButton buttonAllDulces;
+    public JButton buttonComprobarA;
+    public JButton buttonActualizarA;
     public JButton exitAll;
-    public JTextArea areaMostrarAll;
+    public JButton buttonCrearDulce;
+    public JButton ButtonactualizarM;
+
     public JLabel title;
     public JLabel nombreDulce;
     public JLabel labelTipoDulce;
-    public JButton buttonAllDulces;
-    public ButtonGroup grupoA;
-    public ButtonGroup categoriaDulce;
-    public JButton buttonEliminar;
     public JLabel labelActualizar;
     public JLabel labelNuevosDatos;
-    public JButton ButtonactualizarM;
+
+    public JTextField campoNombre;
+    public JTextField campoNombreEliminar;
+    public JTextField campoNombreActualizar;
+
+    public JTextArea areaMostrarAll;
     public JTextArea areaMostrar;
-    private JPanel laminaActualizarDulces;
-    private JPanel LaminaMostrarDulces;
-    private JPanel laminaEliminarDulces;
+
     public JRadioButton dulceA;
     public JRadioButton acidoA;
     public JRadioButton sinAzucarA;
     public JRadioButton dulce;
     public JRadioButton acido;
     public JRadioButton sinAzucar;
-    public JButton buttonCrearDulce;
-    public JFrame ventana;
+
+    public ButtonGroup grupoA;
+    public ButtonGroup categoriaDulce;
+
+    private JPanel laminaActualizarDulces;
+    private JPanel LaminaMostrarDulces;
+    private JPanel laminaEliminarDulces;
     public JPanel laminaAgregar;
-    public JTextField campoNombre;
-    public JTextField campoNombreEliminar;
-    public JTextField campoNombreActualizar;
-    public JButton buttonComprobarA;
-    public JButton buttonActualizarA;
+
+    public JFrame ventana;
+
+    private ControladorDulces controlador;
 }
