@@ -3,6 +3,8 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -23,7 +25,7 @@ public class InterfazGrafica implements PlantillaInterfaz {
         buttonEliminar = new JButton("Eliminar");
         labelActualizar = new JLabel("no se encontro nigun dulce con este nombre");
         labelNuevosDatos = new JLabel("Ingrese los nuevos datos: ");
-        ButtonactualizarM = new JButton("Actualizar");
+        ButtonactualizarM = new JButton("ActualizarM");
         areaMostrar = new JTextArea("");
         buttonCrearDulce = new JButton("Crear Dulce");
         campoNombre = new JTextField("");
@@ -56,8 +58,27 @@ public class InterfazGrafica implements PlantillaInterfaz {
     }
 
     @Override
-    public void mostrarDulces(Datos data) {
+    public String getNameComprobar() {
+        return campoNombreActualizar.getText();
+    }
 
+    @Override
+    public void comprobar(String n) {
+        int var = controlador.retornoComprobar(n);
+        if (var > -1) {
+            campoNombreActualizar.setText("");
+            cambiarVistaActualizar();
+        }
+    }
+
+    @Override
+    public void mostrarAllDulces(String n) {
+
+    }
+
+    @Override
+    public void mostrarDulces(String n) {
+        areaMostrar.setText(n);
     }
 
     @Override
@@ -146,6 +167,7 @@ public class InterfazGrafica implements PlantillaInterfaz {
         laminaAgregar.add(buttonCrearDulce);
         buttonAllDulces.setBounds(40, 270, 150, 30);
         buttonAllDulces.setBackground(new Color(227, 244, 244));
+        buttonAllDulces.addActionListener(controlador);
         laminaAgregar.add(buttonAllDulces);
     }
 
@@ -164,6 +186,7 @@ public class InterfazGrafica implements PlantillaInterfaz {
         laminaEliminarDulces.add(campoNombreEliminar);
         buttonEliminar.setBounds(150, 250, 90, 30);
         buttonEliminar.setBackground(new Color(227, 244, 244));
+        buttonEliminar.addActionListener(controlador);
         laminaEliminarDulces.add(buttonEliminar);
     }
 
@@ -179,8 +202,9 @@ public class InterfazGrafica implements PlantillaInterfaz {
         areaMostrar.setEditable(false);
         LaminaMostrarDulces.add(areaMostrar);
         ButtonactualizarM.setBounds(150, 285, 100, 30);
+        ButtonactualizarM.setVisible(true);
+        ButtonactualizarM.addActionListener(controlador);
         LaminaMostrarDulces.add(ButtonactualizarM);
-        ButtonactualizarM.setVisible(false);
 
     }
 
@@ -228,9 +252,20 @@ public class InterfazGrafica implements PlantillaInterfaz {
         labelNuevosDatos.setVisible(false);
         buttonComprobarA.setBounds(150, 220, 100, 30);
         buttonComprobarA.setBackground(new Color(227, 244, 244));
+        buttonComprobarA.addActionListener(controlador);
         laminaActualizarDulces.add(buttonComprobarA);
         buttonActualizarA.setBackground(new Color(227, 244, 244));
         buttonActualizarA.setVisible(false);
+        buttonActualizarA.addActionListener(controlador);
+    }
+
+    public void cambiarVistaActualizar() {
+        buttonActualizarA.setVisible(false);
+        dulceA.setVisible(true);
+        acidoA.setVisible(true);
+        sinAzucarA.setVisible(true);
+        labelNuevosDatos.setVisible(true);
+        buttonActualizarA.setVisible(true);
     }
 
     public JButton buttonEliminar;
@@ -272,4 +307,5 @@ public class InterfazGrafica implements PlantillaInterfaz {
     public JFrame ventana;
 
     private ControladorDulces controlador;
+
 }

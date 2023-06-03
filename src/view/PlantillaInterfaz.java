@@ -10,11 +10,18 @@ public interface PlantillaInterfaz {
 
     public String getTipoAgregar();
 
+    public String getNameComprobar();
+
     public String getNameActualizar();
 
     public String getTipoActualizar();
 
     public String getNameEliminar();
 
-    public void mostrarDulces(Datos data);
+    public void comprobar(String n);
+
+    public void mostrarDulces(String n);
+
+    public void mostrarAllDulces(String n);
+
 }

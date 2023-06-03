@@ -2,18 +2,18 @@ package model;
 
 public class Dulce {
 
-    public Dulce(char Tipo, String name) {
+    public Dulce(String Tipo, String name) {
         dulce = false;
         acido = false;
         sinAzucar = false;
         this.name = name;
         switch (Tipo) {
-            case 'D':
+            case "D":
                 this.dulce = true;
                 break;
-            case 'A':
+            case "A":
                 this.acido = true;
-            case 'S':
+            case "S":
                 this.sinAzucar = true;
         }
     }
@@ -53,12 +53,6 @@ public class Dulce {
 
     public String getName() {
         return name;
-    }
-
-    public void crearDulce(String name, char tipo) {
-        Dulce nuevo = new Dulce(tipo, name);
-        data.agregarAllDulces(nuevo);
-        data.agregarDulces(nuevo);
     }
 
     private Datos data;
