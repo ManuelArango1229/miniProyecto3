@@ -1,13 +1,14 @@
 package view;
 
 import controller.ControladorDulces;
+import controller.TipoDulce;
 
 public interface PlantillaInterfaz {
     public void init(ControladorDulces controlador);
 
     public String getNameAgregar();
 
-    public String getTipoAgregar();
+    public TipoDulce getTipoAgregar();
 
     public String getNameActualizarC();
 
