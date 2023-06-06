@@ -22,19 +22,22 @@ public class Dulce {
             default:
                 return "Sin Especificar";
         }
-
     }
 
     public void setTipo(TipoDulce tipo) {
         switch (tipo) {
             case DULCE:
-                tipo = TipoDulce.DULCE;
+                this.tipo = TipoDulce.DULCE;
+                break;
             case SINAZUCAR:
-                tipo = TipoDulce.SINAZUCAR;
+                this.tipo = TipoDulce.SINAZUCAR;
+                break;
             case ACIDO:
-                tipo = TipoDulce.ACIDO;
+                this.tipo = TipoDulce.ACIDO;
+                break;
             default:
-                tipo = TipoDulce.SINESPECIFICAR;
+                this.tipo = TipoDulce.SINESPECIFICAR;
+        
         }
 
     }

@@ -1,6 +1,7 @@
 package controller;
 
 import model.Datos;
+import model.Dulce;
 import view.PlantillaInterfaz;
 
 import java.awt.event.ActionEvent;
@@ -55,10 +56,13 @@ public class ControladorDulces implements ActionListener {
                 break;
             case MOSTRAR:
                 view.mostrarDulces(data.imprimirDulces());
+                for (int i = 0; i < data.obteberDulces().size(); i++) {
+                    System.out.println(data.obteberDulces().get(i).getName());
+                }
                 break;
             case ALLMOSTRAR:
                 view.mostrarAllDulces(data.allImprimirDulces());
-
+                break;
         }
 
     }

@@ -100,11 +100,11 @@ public class InterfazGrafica implements PlantillaInterfaz {
 
     @Override
     public TipoDulce getTipoActualizar() {
-        if (categoriaDulce.getSelection() == dulceA.getModel()) {
+        if (grupoA.getSelection() == dulceA.getModel()) {
             return TipoDulce.DULCE;
-        } else if (categoriaDulce.getSelection() == acidoA.getModel()) {
+        } else if (grupoA.getSelection() == acidoA.getModel()) {
             return TipoDulce.ACIDO;
-        } else if (categoriaDulce.getSelection() == sinAzucarA.getModel()) {
+        } else if (grupoA.getSelection() == sinAzucarA.getModel()) {
             return TipoDulce.SINAZUCAR;
         } else {
             return TipoDulce.SINESPECIFICAR;
@@ -276,15 +276,15 @@ public class InterfazGrafica implements PlantillaInterfaz {
         grupoA.add(dulceA);
         grupoA.add(acidoA);
         grupoA.add(sinAzucarA);
-        dulceA.setBounds(120, 180, 60, 30);
-        sinAzucarA.setBounds(120, 160, 100, 30);
-        acidoA.setBounds(120, 140, 60, 30);
+        dulceA.setBounds(120, 220, 60, 30);
+        sinAzucarA.setBounds(120, 200, 100, 30);
+        acidoA.setBounds(120, 180, 60, 30);
         laminaActualizarDulces.add(dulceA);
         laminaActualizarDulces.add(sinAzucarA);
         laminaActualizarDulces.add(acidoA);
-        dulceA.setVisible(false);
-        acidoA.setVisible(false);
-        sinAzucarA.setVisible(false);
+        dulceA.setVisible(true);
+        acidoA.setVisible(true);
+        sinAzucarA.setVisible(true);
         labelNuevosDatos.setBounds(60, 80, 180, 20);
         laminaActualizarDulces.add(labelNuevosDatos);
         labelNuevosDatos.setVisible(false);
