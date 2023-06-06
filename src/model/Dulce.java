@@ -17,27 +17,26 @@ public class Dulce {
                 return "Dulce";
             case SINAZUCAR:
                 return "Sin Azucar";
-            default:
+            case ACIDO:
                 return "Acido";
+            default:
+                return "Sin Especificar";
         }
 
     }
 
-    public void setTipo(char tipo) {
-        // dulce = false;
-        // sinAzucar = false;
-        // acido = false;
-        // switch (tipo) {
-        // case 'D':
-        // dulce = true;
-        // break;
-        // case 'S':
-        // sinAzucar = true;
-        // case 'A':
-        // acido = true;
-        // default:
-        // break;
-        // }
+    public void setTipo(TipoDulce tipo) {
+        switch (tipo) {
+            case DULCE:
+                tipo = TipoDulce.DULCE;
+            case SINAZUCAR:
+                tipo = TipoDulce.SINAZUCAR;
+            case ACIDO:
+                tipo = TipoDulce.ACIDO;
+            default:
+                tipo = TipoDulce.SINESPECIFICAR;
+        }
+
     }
 
     public void setName(String name) {

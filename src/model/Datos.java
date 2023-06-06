@@ -60,10 +60,10 @@ public class Datos {
 
     }
 
-    public boolean actualizarDulces(String nameA, String nameN, String tipo) {
+    public boolean actualizarDulces(String nameA, String nameN, TipoDulce tipo) {
         int tmp = comprobarDulces(nameA);
         datos.get(tmp).setName(nameN);
-        // datos.get(tmp).setTipo(tipo);
+        datos.get(tmp).setTipo(tipo);
         return true;
     }
 

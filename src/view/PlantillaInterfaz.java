@@ -14,7 +14,7 @@ public interface PlantillaInterfaz {
 
     public String getNameActualizar();
 
-    public String getTipoActualizar();
+    public TipoDulce getTipoActualizar();
 
     public String getNameEliminar();
 

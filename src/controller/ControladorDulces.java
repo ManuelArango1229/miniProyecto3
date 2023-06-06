@@ -48,7 +48,7 @@ public class ControladorDulces implements ActionListener {
                 data.crearDulce(view.getNameAgregar(), view.getTipoAgregar());
                 break;
             case ACTUALIZAR:
-                data.actualizarDulces(view.getNameActualizarC(), view.getNameActualizar(), null);
+                data.actualizarDulces(view.getNameActualizarC(), view.getNameActualizar(), view.getTipoActualizar());
                 break;
             case ELIMINAR:
                 data.eleminarDulce(view.getNameEliminar());

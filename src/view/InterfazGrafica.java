@@ -88,7 +88,7 @@ public class InterfazGrafica implements PlantillaInterfaz {
         } else if (categoriaDulce.getSelection() == sinAzucar.getModel()) {
             return TipoDulce.SINAZUCAR;
         } else {
-            return null;
+            return TipoDulce.SINESPECIFICAR;
         }
 
     }
@@ -99,13 +99,15 @@ public class InterfazGrafica implements PlantillaInterfaz {
     }
 
     @Override
-    public String getTipoActualizar() {
-        if (categoriaDulce.getSelection() == dulceA) {
-            return dulceA.getText();
-        } else if (categoriaDulce.getSelection() == acidoA) {
-            return acidoA.getText();
+    public TipoDulce getTipoActualizar() {
+        if (categoriaDulce.getSelection() == dulceA.getModel()) {
+            return TipoDulce.DULCE;
+        } else if (categoriaDulce.getSelection() == acidoA.getModel()) {
+            return TipoDulce.ACIDO;
+        } else if (categoriaDulce.getSelection() == sinAzucarA.getModel()) {
+            return TipoDulce.SINAZUCAR;
         } else {
-            return sinAzucarA.getText();
+            return TipoDulce.SINESPECIFICAR;
         }
     }
 
