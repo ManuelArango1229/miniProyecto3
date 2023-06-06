@@ -65,7 +65,6 @@ public class InterfazGrafica implements PlantillaInterfaz {
     public void mostrarAllDulces(String n) {
         mostrarAllDulces();
         areaMostrarAll.setText(n);
-
     }
 
     @Override

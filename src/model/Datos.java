@@ -27,11 +27,7 @@ public class Datos {
     }
 
     public String imprimirDulces() {
-        String imprimir = "No se han encontrado dulces\n";
-
-        if(datos.isEmpty()){
-            return imprimir;
-        }
+        String imprimir = "";
 
         for (int i = 0; i < datos.size(); i++) {
             imprimir += datos.get(i).getName() + "\t\t" + "";
@@ -41,11 +37,7 @@ public class Datos {
     }
 
     public String allImprimirDulces() {
-        String imprimir = "No se han encontrado dulces\n";
-
-        if (allDatos.isEmpty()) {
-            return imprimir;
-        }
+        String imprimir = "";
 
         for (int i = 0; i < allDatos.size(); i++) {
             imprimir += allDatos.get(i).getName() + "\t\t";
@@ -67,6 +59,11 @@ public class Datos {
 
     public boolean actualizarDulces(String nameA, String nameN, String tipo) {
         int tmp = comprobarDulces(nameA);
+
+        if (tmp == -1) {
+            return false;
+        }
+
         datos.get(tmp).setName(nameN);
         // datos.get(tmp).setTipo(tipo);
         return true;
@@ -79,6 +76,9 @@ public class Datos {
     }
 
     public boolean eleminarDulce(String name) {
+        if(comprobarDulces(name) == -1){
+            return false;
+        }
         datos.remove(comprobarDulces(name));
         return true;
     }

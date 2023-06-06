@@ -3,10 +3,11 @@ package view;
 import controller.ControladorDulces;
 import controller.Opcion;
 import model.Datos;
+import controller.TipoDulce;
 
 import java.util.Scanner;
 
-class Consola implements PlantillaInterfaz {
+public class Consola implements PlantillaInterfaz {
 
     Scanner scanner = new Scanner(System.in);
     ControladorDulces controlador;
@@ -16,18 +17,20 @@ class Consola implements PlantillaInterfaz {
     @Override
     public void init(ControladorDulces controlador) {
         
+        while(true){
         System.out.println("******************** BIENVENIDO ********************\n");
         System.out.println("1. Agregar Dulces");
         System.out.println("2. Actualizar Dulces");
         System.out.println("3. Eliminar Dulces");
-        System.out.println("4. Mostrar Dulces");
-        System.out.println("0. Salir");
+        System.out.println("4. Mostrar Dulces Actuales");
+        System.out.println("5. Mostrar Todos los Dulces");
+        System.out.println("0. Salir\n");
 
-        while(opcion <= 4 && opcion >= 0){
+        do {
             System.out.print("Ingrese una opcion: ");
-            scanner.nextInt();
+            opcion = scanner.nextInt();
             scanner.nextLine();
-        }
+        }while(opcion < 0 || opcion > 5);
 
         switch (opcion) {
             case 0:
@@ -48,58 +51,130 @@ class Consola implements PlantillaInterfaz {
                 break;
             case 4:
                 controlador.setOpcion(Opcion.MOSTRAR);
+                break;
+            case 5:
+                controlador.setOpcion(Opcion.ALLMOSTRAR);
         }
 
         controlador.actionPerformed(null);
     }
-
-    @Override
-    public String getNameAgregar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getNameAgregar'");
     }
 
     @Override
-    public String getTipoAgregar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTipoAgregar'");
+    public String getNameAgregar() {
+        String nombre = "";
+        System.out.println("\n****************************************************");
+        System.out.print("Ingrese el nombre del dulce: ");
+        nombre = scanner.nextLine();
+        return nombre;
+    }
+
+    @Override
+    public TipoDulce getTipoAgregar() {
+        TipoDulce tipo = TipoDulce.DULCE;
+        int tipoInt = 0;
+        System.out.println("\n****************************************************");
+        System.out.println("Ingrese el tipo de dulce...");
+        System.out.println("1. Dulce");
+        System.out.println("2. Acido");
+        System.out.println("3. Sin Azucar\n");
+        System.out.print("Ingrese su eleccion:");
+
+        while (tipoInt < 1 || tipoInt > 3) {
+            tipoInt = scanner.nextInt();
+            scanner.nextLine();
+        }
+
+        switch (tipoInt) {
+            case 1:
+                tipo = TipoDulce.DULCE;
+                break;
+            case 2:
+                tipo = TipoDulce.ACIDO;
+                break;
+            case 3:
+                tipo = TipoDulce.SINAZUCAR;
+                break;
+        }
+
+        return tipo;
     }
 
     @Override
     public String getNameActualizarC() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getNameActualizarC'");
+        String nombre = "";
+        System.out.println("\n****************************************************");
+        System.out.print("Ingrese el nombre actual del dulce: ");
+        nombre = scanner.nextLine();
+        return nombre;
     }
 
     @Override
     public String getNameActualizar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getNameActualizar'");
+
+        String nombre = "";
+        System.out.println("\n****************************************************");
+        System.out.print("Ingrese el nombre nuevo del dulce: ");
+        nombre = scanner.nextLine();
+        return nombre;
     }
 
     @Override
     public String getTipoActualizar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTipoActualizar'");
+
+        String tipo = "";
+        int tipoInt = 0;
+        System.out.println("\n****************************************************");
+        System.out.println("Ingrese el tipo de dulce...");
+        System.out.println("1. Dulce");
+        System.out.println("2. Acido");
+        System.out.println("3. Sin Azucar\n");
+        System.out.print("Ingrese su eleccion:");
+
+        while (tipoInt < 1 || tipoInt > 3) {
+            tipoInt = scanner.nextInt();
+            scanner.nextLine();
+        }
+
+        switch (tipoInt) {
+            case 1:
+                tipo = "Dulce";
+                break;
+            case 2:
+                tipo = "Acido";
+                break;
+            case 3:
+                tipo = "Sin Azucar";
+                break;
+        }
+
+        return tipo;
     }
 
     @Override
     public String getNameEliminar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getNameEliminar'");
+
+        String nombre = "";
+        System.out.println("\n****************************************************");
+        System.out.print("Ingrese el nombre del dulce a eliminar: ");
+        nombre = scanner.nextLine();
+        return nombre;
     }
 
     @Override
     public void mostrarDulces(String n) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrarDulces'");
+        System.out.println("\n****************************************************");
+        System.out.println(n + "\n");
+        System.out.print("Presione enter para continuar...");
+        scanner.nextLine();
     }
 
     @Override
     public void mostrarAllDulces(String n) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrarAllDulces'");
+        System.out.println("\n****************************************************");
+        System.out.println(n + "\n");
+        System.out.print("Presione enter para continuar...");
+        scanner.nextLine();
     }
-
 
 }
