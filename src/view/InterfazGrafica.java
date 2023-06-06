@@ -17,6 +17,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import controller.ControladorDulces;
+import controller.TipoDulce;
 
 public class InterfazGrafica implements PlantillaInterfaz {
 
@@ -78,13 +79,16 @@ public class InterfazGrafica implements PlantillaInterfaz {
     }
 
     @Override
-    public String getTipoAgregar() {
-        if (categoriaDulce.getSelection() == dulce) {
-            return dulce.getText();
-        } else if (categoriaDulce.getSelection() == acido) {
-            return acido.getText();
+    public TipoDulce getTipoAgregar() {
+
+        if (categoriaDulce.getSelection() == dulce.getModel()) {
+            return TipoDulce.DULCE;
+        } else if (categoriaDulce.getSelection() == acido.getModel()) {
+            return TipoDulce.ACIDO;
+        } else if (categoriaDulce.getSelection() == sinAzucar.getModel()) {
+            return TipoDulce.SINAZUCAR;
         } else {
-            return sinAzucar.getText();
+            return null;
         }
 
     }

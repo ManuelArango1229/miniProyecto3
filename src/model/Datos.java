@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import controller.TipoDulce;
+
 public class Datos {
     private ArrayList<Dulce> datos = new ArrayList<>();
     private ArrayList<Dulce> allDatos = new ArrayList<>();
@@ -70,8 +72,8 @@ public class Datos {
         return true;
     }
 
-    public void crearDulce(String name, String tipo) {
-        Dulce nuevo = new Dulce(tipo, name);
+    public void crearDulce(String name, TipoDulce n) {
+        Dulce nuevo = new Dulce(n, name);
         agregarAllDulces(nuevo);
         agregarDulces(nuevo);
     }
