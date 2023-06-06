@@ -1,49 +1,43 @@
 package model;
 
+import controller.TipoDulce;
+
 public class Dulce {
-    public Dulce(char Tipo, String name) {
-        dulce = false;
-        acido = false;
-        sinAzucar = false;
+
+    public Dulce(TipoDulce Tipo, String name) {
+
         this.name = name;
-        switch (Tipo) {
-            case 'D':
-                this.dulce = true;
-                break;
-            case 'A':
-                this.acido = true;
-            case 'S':
-                this.sinAzucar = true;
-        }
+        this.tipo = Tipo;
+
     }
 
     public String getTipo() {
-        if (dulce) {
-            return "Dulce";
-        } else if (acido) {
-            return "Acido";
-        } else if (sinAzucar) {
-            return "Sin Azucar";
-        } else {
-            return "No Especificado";
+        switch (tipo) {
+            case DULCE:
+                return "Dulce";
+            case SINAZUCAR:
+                return "Sin Azucar";
+            default:
+                return "Acido";
         }
+
     }
 
     public void setTipo(char tipo) {
-        dulce = false;
-        sinAzucar = false;
-        acido = false;
-        switch (tipo) {
-            case 'D':
-                dulce = true;
-                break;
-            case 'S':
-                sinAzucar = true;
-            case 'A':
-                acido = true;
-            default:
-                break;
-        }
+        // dulce = false;
+        // sinAzucar = false;
+        // acido = false;
+        // switch (tipo) {
+        // case 'D':
+        // dulce = true;
+        // break;
+        // case 'S':
+        // sinAzucar = true;
+        // case 'A':
+        // acido = true;
+        // default:
+        // break;
+        // }
     }
 
     public void setName(String name) {
@@ -54,8 +48,7 @@ public class Dulce {
         return name;
     }
 
+    private Datos data;
     private String name;
-    private boolean dulce;
-    private boolean acido;
-    private boolean sinAzucar;
+    private TipoDulce tipo;
 }
