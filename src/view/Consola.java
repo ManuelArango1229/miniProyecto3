@@ -64,8 +64,10 @@ public class Consola implements PlantillaInterfaz {
     public String getNameAgregar() {
         String nombre = "";
         System.out.println("\n****************************************************");
-        System.out.print("Ingrese el nombre del dulce: ");
-        nombre = scanner.nextLine();
+        while(nombre.isEmpty()){
+            System.out.print("Ingrese el nombre del dulce: ");
+            nombre = scanner.nextLine();
+        }
         return nombre;
     }
 
@@ -114,8 +116,10 @@ public class Consola implements PlantillaInterfaz {
 
         String nombre = "";
         System.out.println("\n****************************************************");
-        System.out.print("Ingrese el nombre nuevo del dulce: ");
-        nombre = scanner.nextLine();
+        while(nombre.equals("")){
+            System.out.print("Ingrese el nombre nuevo del dulce: ");
+            nombre = scanner.nextLine();
+        }
         return nombre;
     }
 
@@ -177,4 +181,11 @@ public class Consola implements PlantillaInterfaz {
         scanner.nextLine();
     }
 
+    @Override
+    public void error(String n) {
+        System.out.println(n+"\n");
+        System.out.print("Presione enter para continuar...");
+        scanner.nextLine();
+    }
+    
 }

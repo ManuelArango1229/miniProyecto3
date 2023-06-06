@@ -10,6 +10,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
@@ -25,7 +26,7 @@ public class InterfazGrafica implements PlantillaInterfaz {
         buttonEliminar = new JButton("Eliminar");
         labelActualizar = new JLabel("no se encontro nigun dulce con este nombre");
         labelNuevosDatos = new JLabel("Ingrese los nuevos datos: ");
-        ButtonactualizarM = new JButton("ActualizarM");
+        ButtonactualizarM = new JButton("Actualizar ");
         areaMostrar = new JTextArea("");
         buttonCrearDulce = new JButton("Crear Dulce");
         campoNombre = new JTextField("");
@@ -95,6 +96,7 @@ public class InterfazGrafica implements PlantillaInterfaz {
     @Override
     public String getNameActualizar() {
         return campoNombreActualizar.getText();
+        
     }
 
     @Override
@@ -289,8 +291,11 @@ public class InterfazGrafica implements PlantillaInterfaz {
         buttonActualizarA.setBackground(new Color(227, 244, 244));
         buttonActualizarA.addActionListener(controlador);
         laminaActualizarDulces.add(buttonActualizarA);
-        buttonActualizarA.setBackground(new Color(227, 244, 244));
-        buttonActualizarA.addActionListener(controlador);
+    }
+
+    @Override
+    public void error(String n) {
+        JOptionPane.showMessageDialog(null, n);
     }
 
     public JButton buttonEliminar;
