@@ -29,18 +29,21 @@ public class ControladorDulces implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JButton tmp = (JButton) e.getSource();
-        String name = "";
-        if (tmp.getText().equals("Crear Dulce")) {
-            this.opcion = opcion.CREAR;
-        } else if (tmp.getText().equals("Actualizar")) {
-            this.opcion = opcion.ACTUALIZAR;
-        } else if (tmp.getText().equals("Eliminar")) {
-            this.opcion = opcion.ELIMINAR;
-        } else if (tmp.getText().equals("ActualizarM")) {
-            this.opcion = opcion.MOSTRAR;
-        } else if (tmp.getText().equals("Dulces Creados")) {
-            this.opcion = opcion.ALLMOSTRAR;
+
+        if (e != null) {
+            JButton tmp = (JButton) e.getSource();
+            String name = "";
+            if (tmp.getText().equals("Crear Dulce")) {
+                this.opcion = opcion.CREAR;
+            } else if (tmp.getText().equals("Actualizar")) {
+                this.opcion = opcion.ACTUALIZAR;
+            } else if (tmp.getText().equals("Eliminar")) {
+                this.opcion = opcion.ELIMINAR;
+            } else if (tmp.getText().equals("ActualizarM")) {
+                this.opcion = opcion.MOSTRAR;
+            } else if (tmp.getText().equals("Dulces Creados")) {
+                this.opcion = opcion.ALLMOSTRAR;
+            }
         }
 
         switch (opcion) {

@@ -25,7 +25,12 @@ public class Datos {
     }
 
     public String imprimirDulces() {
-        String imprimir = "";
+        String imprimir = "No se han encontrado dulces\n";
+
+        if(datos.isEmpty()){
+            return imprimir;
+        }
+
         for (int i = 0; i < datos.size(); i++) {
             imprimir += datos.get(i).getName() + "\t\t" + "";
             imprimir += datos.get(i).getTipo() + "\n";
@@ -34,7 +39,12 @@ public class Datos {
     }
 
     public String allImprimirDulces() {
-        String imprimir = "";
+        String imprimir = "No se han encontrado dulces\n";
+
+        if (allDatos.isEmpty()) {
+            return imprimir;
+        }
+
         for (int i = 0; i < allDatos.size(); i++) {
             imprimir += allDatos.get(i).getName() + "\t\t";
             imprimir += allDatos.get(i).getTipo() + "\n";
@@ -43,19 +53,14 @@ public class Datos {
     }
 
     public int comprobarDulces(String n) {
-        int ret = 0;
+        int ret = -1;
         for (int i = 0; i < datos.size(); i++) {
             if (datos.get(i).getName().equals(n)) {
                 ret = i;
             }
         }
 
-        if (ret > -1) {
-            return ret;
-        } else {
-            return -1;
-        }
-
+        return ret;
     }
 
     public boolean actualizarDulces(String nameA, String nameN, String tipo) {
