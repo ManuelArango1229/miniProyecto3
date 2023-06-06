@@ -1,8 +1,6 @@
 package controller;
 
 import model.Datos;
-import model.Dulce;
-import view.InterfazGrafica;
 import view.PlantillaInterfaz;
 
 import java.awt.event.ActionEvent;
@@ -35,26 +33,22 @@ public class ControladorDulces implements ActionListener {
         String name = "";
         if (tmp.getText().equals("Crear Dulce")) {
             this.opcion = opcion.CREAR;
-        } else if (tmp.getText().equals("Comprobar")) {
-            this.opcion = opcion.COMPROBAR;
-            name = view.getNameComprobar();
         } else if (tmp.getText().equals("Actualizar")) {
             this.opcion = opcion.ACTUALIZAR;
         } else if (tmp.getText().equals("Eliminar")) {
             this.opcion = opcion.ELIMINAR;
         } else if (tmp.getText().equals("ActualizarM")) {
             this.opcion = opcion.MOSTRAR;
+        } else if (tmp.getText().equals("Dulces Creados")) {
+            this.opcion = opcion.ALLMOSTRAR;
         }
 
         switch (opcion) {
             case CREAR:
                 data.crearDulce(view.getNameAgregar(), view.getTipoAgregar());
                 break;
-            case COMPROBAR:
-                view.comprobar(view.getNameComprobar());
-                break;
             case ACTUALIZAR:
-                data.actualizarDulces(name, view.getNameActualizar(), null);
+                data.actualizarDulces(view.getNameActualizarC(), view.getNameActualizar(), null);
                 break;
             case ELIMINAR:
                 data.eleminarDulce(view.getNameEliminar());
@@ -62,19 +56,10 @@ public class ControladorDulces implements ActionListener {
             case MOSTRAR:
                 view.mostrarDulces(data.imprimirDulces());
                 break;
+            case ALLMOSTRAR:
+                view.mostrarAllDulces(data.allImprimirDulces());
 
         }
-        // if (tmp.getText().equals("Crear Dulce")) {
-        // data.crearDulce(view.getNameAgregar(), view.getTipoAgregar());
-        // } else if (tmp.getText().equals("Dulces Creados")) {
-        // view.mostrarAllDulces(data.allImprimirDulces());
-        // } else if (tmp.getText().equals("Comprobar")) {
-        // System.out.println(data.comprobarDulces(view.getNameActualizar()));
-        // } else if (tmp.getText().equals("Actualizar")) {
-        // System.out.println("sirve");
-        // } else if (tmp.getText().equals("Eliminar")) {
-        // System.out.println("sirve");
-        // }
 
     }
 

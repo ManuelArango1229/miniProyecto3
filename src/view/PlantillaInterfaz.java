@@ -1,6 +1,5 @@
 package view;
 
-import model.Datos;
 import controller.ControladorDulces;
 
 public interface PlantillaInterfaz {
@@ -10,15 +9,13 @@ public interface PlantillaInterfaz {
 
     public String getTipoAgregar();
 
-    public String getNameComprobar();
+    public String getNameActualizarC();
 
     public String getNameActualizar();
 
     public String getTipoActualizar();
 
     public String getNameEliminar();
-
-    public void comprobar(String n);
 
     public void mostrarDulces(String n);
 

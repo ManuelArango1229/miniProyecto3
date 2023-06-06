@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import model.Dulce;
 
 public class Datos {
     private ArrayList<Dulce> datos = new ArrayList<>();
@@ -38,19 +37,24 @@ public class Datos {
         String imprimir = "";
         for (int i = 0; i < allDatos.size(); i++) {
             imprimir += allDatos.get(i).getName() + "\t\t";
-            imprimir += allDatos.get(i).getTipo();
+            imprimir += allDatos.get(i).getTipo() + "\n";
         }
         return imprimir;
     }
 
     public int comprobarDulces(String n) {
+        int ret = 0;
         for (int i = 0; i < datos.size(); i++) {
             if (datos.get(i).getName().equals(n)) {
-                return i;
+                ret = i;
             }
         }
 
-        return -1;
+        if (ret > -1) {
+            return ret;
+        } else {
+            return -1;
+        }
 
     }
 

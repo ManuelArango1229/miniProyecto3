@@ -17,7 +17,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import controller.ControladorDulces;
-import model.Datos;
 
 public class InterfazGrafica implements PlantillaInterfaz {
 
@@ -31,12 +30,11 @@ public class InterfazGrafica implements PlantillaInterfaz {
         campoNombre = new JTextField("");
         campoNombreEliminar = new JTextField("");
         campoNombreActualizar = new JTextField("");
-        buttonComprobarA = new JButton("Comprobar");
         buttonActualizarA = new JButton("Actualizar");
         buttonAllDulces = new JButton("Dulces Creados");
+        campoNombreAComprobar = new JTextField("");
         areaMostrarAll = new JTextArea();
         exitAll = new JButton("Salir");
-
     }
 
     @Override
@@ -58,21 +56,14 @@ public class InterfazGrafica implements PlantillaInterfaz {
     }
 
     @Override
-    public String getNameComprobar() {
-        return campoNombreActualizar.getText();
-    }
-
-    @Override
-    public void comprobar(String n) {
-        int var = controlador.retornoComprobar(n);
-        if (var > -1) {
-            campoNombreActualizar.setText("");
-            cambiarVistaActualizar();
-        }
+    public String getNameActualizarC() {
+        return campoNombreAComprobar.getText();
     }
 
     @Override
     public void mostrarAllDulces(String n) {
+        mostrarAllDulces();
+        areaMostrarAll.setText(n);
 
     }
 
@@ -126,6 +117,43 @@ public class InterfazGrafica implements PlantillaInterfaz {
         panel.addTab("Eliminar", laminaEliminarDulces);
         panel.addTab("Mostrar", LaminaMostrarDulces);
         ventana.add(panel);
+
+    }
+
+    public void mostrarAllDulces() {
+        areaMostrarAll.setVisible(true);
+        title.setText("DULCES CREADOS");
+        buttonAllDulces.setVisible(false);
+        buttonCrearDulce.setVisible(false);
+        acido.setVisible(false);
+        dulce.setVisible(false);
+        sinAzucar.setVisible(false);
+        labelTipoDulce.setVisible(false);
+        nombreDulce.setVisible(false);
+        campoNombre.setVisible(false);
+        areaMostrarAll.setBounds(50, 60, 300, 200);
+        laminaAgregar.add(areaMostrarAll);
+        exitAll.setBounds(170, 270, 70, 30);
+        exitAll.setVisible(true);
+        exitAll.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                title.setText("AGREGAR DULCES");
+                buttonAllDulces.setVisible(true);
+                buttonCrearDulce.setVisible(true);
+                acido.setVisible(true);
+                dulce.setVisible(true);
+                sinAzucar.setVisible(true);
+                labelTipoDulce.setVisible(true);
+                nombreDulce.setVisible(true);
+                campoNombre.setVisible(true);
+                areaMostrarAll.setVisible(false);
+                exitAll.setVisible(false);
+            }
+
+        });
+        laminaAgregar.add(exitAll);
 
     }
 
@@ -201,7 +229,7 @@ public class InterfazGrafica implements PlantillaInterfaz {
         areaMostrar.setBackground(new Color(196, 223, 223));
         areaMostrar.setEditable(false);
         LaminaMostrarDulces.add(areaMostrar);
-        ButtonactualizarM.setBounds(150, 285, 100, 30);
+        ButtonactualizarM.setBounds(150, 307, 100, 30);
         ButtonactualizarM.setVisible(true);
         ButtonactualizarM.addActionListener(controlador);
         LaminaMostrarDulces.add(ButtonactualizarM);
@@ -215,16 +243,20 @@ public class InterfazGrafica implements PlantillaInterfaz {
         JLabel titleActualizar = new JLabel("ACTUALIZAR DULCES");
         titleActualizar.setBounds(130, 30, 150, 30);
         laminaActualizarDulces.add(titleActualizar);
-        JLabel labelnameA = new JLabel("Nombre Del Dulce: ");
-        labelnameA.setBounds(60, 100, 180, 30);
+        JLabel labelnameA = new JLabel("Nombre Actual Del Dulce: ");
+        labelnameA.setBounds(30, 100, 180, 30);
         laminaActualizarDulces.add(labelnameA);
-        campoNombreActualizar.setBounds(180, 100, 150, 30);
-        campoNombreActualizar.setBackground(new Color(248, 246, 244));
-        laminaActualizarDulces.add(campoNombreActualizar);
+        campoNombreAComprobar.setBounds(180, 100, 150, 30);
+        campoNombreAComprobar.setBackground(new Color(248, 246, 244));
+        laminaActualizarDulces.add(campoNombreAComprobar);
+        JLabel labelnameAc = new JLabel("Nuevo Nombre  Del Dulce: ");
+        labelnameAc.setBounds(30, 140, 200, 30);
+        laminaActualizarDulces.add(labelnameAc);
         buttonActualizarA.setBounds(150, 220, 100, 30);
         laminaActualizarDulces.add(buttonActualizarA);
-        buttonComprobarA.setBounds(150, 220, 100, 30);
-        laminaActualizarDulces.add(buttonComprobarA);
+        campoNombreActualizar.setBounds(190, 140, 150, 30);
+        campoNombreActualizar.setBackground(new Color(248, 246, 244));
+        laminaActualizarDulces.add(campoNombreActualizar);
         labelActualizar.setBounds(65, 170, 320, 20);
         laminaActualizarDulces.add(labelActualizar);
         labelActualizar.setVisible(false);
@@ -250,27 +282,16 @@ public class InterfazGrafica implements PlantillaInterfaz {
         labelNuevosDatos.setBounds(60, 80, 180, 20);
         laminaActualizarDulces.add(labelNuevosDatos);
         labelNuevosDatos.setVisible(false);
-        buttonComprobarA.setBounds(150, 220, 100, 30);
-        buttonComprobarA.setBackground(new Color(227, 244, 244));
-        buttonComprobarA.addActionListener(controlador);
-        laminaActualizarDulces.add(buttonComprobarA);
+        buttonActualizarA.setBounds(150, 280, 100, 30);
         buttonActualizarA.setBackground(new Color(227, 244, 244));
-        buttonActualizarA.setVisible(false);
         buttonActualizarA.addActionListener(controlador);
-    }
-
-    public void cambiarVistaActualizar() {
-        buttonActualizarA.setVisible(false);
-        dulceA.setVisible(true);
-        acidoA.setVisible(true);
-        sinAzucarA.setVisible(true);
-        labelNuevosDatos.setVisible(true);
-        buttonActualizarA.setVisible(true);
+        laminaActualizarDulces.add(buttonActualizarA);
+        buttonActualizarA.setBackground(new Color(227, 244, 244));
+        buttonActualizarA.addActionListener(controlador);
     }
 
     public JButton buttonEliminar;
     public JButton buttonAllDulces;
-    public JButton buttonComprobarA;
     public JButton buttonActualizarA;
     public JButton exitAll;
     public JButton buttonCrearDulce;
@@ -284,6 +305,7 @@ public class InterfazGrafica implements PlantillaInterfaz {
 
     public JTextField campoNombre;
     public JTextField campoNombreEliminar;
+    public JTextField campoNombreAComprobar;
     public JTextField campoNombreActualizar;
 
     public JTextArea areaMostrarAll;
