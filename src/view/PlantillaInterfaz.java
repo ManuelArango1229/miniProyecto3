@@ -22,4 +22,6 @@ public interface PlantillaInterfaz {
 
     public void mostrarAllDulces(String n);
 
+    public void error(String n);
+
 }

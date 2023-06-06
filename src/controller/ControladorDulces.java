@@ -39,7 +39,7 @@ public class ControladorDulces implements ActionListener {
                 this.opcion = opcion.ACTUALIZAR;
             } else if (tmp.getText().equals("Eliminar")) {
                 this.opcion = opcion.ELIMINAR;
-            } else if (tmp.getText().equals("ActualizarM")) {
+            } else if (tmp.getText().equals("Actualizar ")) {
                 this.opcion = opcion.MOSTRAR;
             } else if (tmp.getText().equals("Dulces Creados")) {
                 this.opcion = opcion.ALLMOSTRAR;
@@ -48,20 +48,36 @@ public class ControladorDulces implements ActionListener {
 
         switch (opcion) {
             case CREAR:
-                data.crearDulce(view.getNameAgregar(), view.getTipoAgregar());
+                String name = view.getNameAgregar();
+                if (name.equals("")){
+                    view.error("El nombre no puede estar vacio.");
+                    break;
+                }
+                data.crearDulce(name, view.getTipoAgregar());
                 break;
             case ACTUALIZAR:
-                data.actualizarDulces(view.getNameActualizarC(), view.getNameActualizar(), null);
+                String nameActual = view.getNameActualizarC();
+                String nameActualizar = view.getNameActualizar();
+                if (nameActualizar.equals("")){
+                    view.error("El nombre no puede estar vacio.");
+                    break;
+                }
+                if (!data.actualizarDulces(nameActual, nameActualizar, null)){
+                    view.error("No se pudo actualizar.");
+                }
+
                 break;
             case ELIMINAR:
-                data.eleminarDulce(view.getNameEliminar());
+                if (!data.eleminarDulce(view.getNameEliminar())){
+                    view.error("No se pudo eliminar.");
+                }
                 break;
             case MOSTRAR:
                 view.mostrarDulces(data.imprimirDulces());
                 break;
             case ALLMOSTRAR:
                 view.mostrarAllDulces(data.allImprimirDulces());
-
+                break;
         }
 
     }
