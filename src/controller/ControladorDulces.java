@@ -49,7 +49,7 @@ public class ControladorDulces implements ActionListener {
         switch (opcion) {
             case CREAR:
                 String name = view.getNameAgregar();
-                if (name.equals("")){
+                if (name.equals("")) {
                     view.error("El nombre no puede estar vacio.");
                     break;
                 }
@@ -58,17 +58,17 @@ public class ControladorDulces implements ActionListener {
             case ACTUALIZAR:
                 String nameActual = view.getNameActualizarC();
                 String nameActualizar = view.getNameActualizar();
-                if (nameActualizar.equals("")){
+                if (nameActualizar.equals("")) {
                     view.error("El nombre no puede estar vacio.");
                     break;
                 }
-                if (!data.actualizarDulces(nameActual, nameActualizar, null)){
+                if (!data.actualizarDulces(nameActual, nameActualizar, null)) {
                     view.error("No se pudo actualizar.");
                 }
 
                 break;
             case ELIMINAR:
-                if (!data.eleminarDulce(view.getNameEliminar())){
+                if (!data.eleminarDulce(view.getNameEliminar())) {
                     view.error("No se pudo eliminar.");
                 }
                 break;
@@ -86,5 +86,4 @@ public class ControladorDulces implements ActionListener {
     private Datos data;
     private PlantillaInterfaz view;
     private TipoDulce tipoDulce;
-
 }

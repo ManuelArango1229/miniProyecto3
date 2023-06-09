@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -64,8 +66,8 @@ public class InterfazGrafica implements PlantillaInterfaz {
 
     @Override
     public void mostrarAllDulces(String n) {
-        mostrarAllDulces();
         areaMostrarAll.setText(n);
+        mostrarAllDulces();
     }
 
     @Override
@@ -96,7 +98,7 @@ public class InterfazGrafica implements PlantillaInterfaz {
     @Override
     public String getNameActualizar() {
         return campoNombreActualizar.getText();
-        
+
     }
 
     @Override
@@ -137,6 +139,8 @@ public class InterfazGrafica implements PlantillaInterfaz {
         nombreDulce.setVisible(false);
         campoNombre.setVisible(false);
         areaMostrarAll.setBounds(50, 60, 300, 200);
+        areaMostrarAll.setBackground(new Color(196, 223, 223));
+        areaMostrarAll.setEditable(false);
         laminaAgregar.add(areaMostrarAll);
         exitAll.setBounds(170, 270, 70, 30);
         exitAll.setVisible(true);
