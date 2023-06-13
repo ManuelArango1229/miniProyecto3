@@ -11,7 +11,7 @@ El proyecto consistió en la creacion de un programa que permite manejar el inve
 
 Integrantes:
 
-— Manuel Arango [2229571]
+— Juan Manuel Arango [2259571]
 
 — Juan Pablo Escobar Viveros [2259519]
 
